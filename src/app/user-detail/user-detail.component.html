@@ -1,0 +1,28 @@
+<div class="transBackgrnd" (click)="onClose()"></div>
+<div class="user-details-box">
+  <div>
+    <h2>User Details:</h2>
+  </div>
+  <dl class="row">
+    <dt class="col-sm-4">User Name</dt>
+    <dd class="col-sm-8">{{ userDetail.display_name }}</dd>
+
+    <dt class="col-sm-4">Location</dt>
+    <dd class="col-sm-8">
+      {{ userDetail.location || "Not Available" }}
+    </dd>
+
+    <dt class="col-sm-4">Reputation</dt>
+    <dd class="col-sm-8">
+      {{ userDetail.reputation || "Not Available" }}
+    </dd>
+
+    <dt class="col-sm-4">User_Type</dt>
+    <dd class="col-sm-8">
+      {{ userDetail.user_type || "Not Available" }}
+    </dd>
+  </dl>
+  <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+  </div>
+</div>

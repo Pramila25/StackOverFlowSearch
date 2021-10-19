@@ -1,0 +1,41 @@
+<div class="md-form">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <input
+        type="text"
+        class="form-control"
+        id="searchTxt"
+        [(ngModel)]="searchText"
+        placeholder="Search user..."
+      />
+    </div>
+    <div class="col-xs-2">
+      <button class="btn btn-primary" (click)="searchData()">Search</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <p *ngIf="usersArray.length < 1 && !isFetching">
+        No user found with given search!
+      </p>
+      <ul class="list-group" *ngIf="usersArray.length >= 1 && !isFetching">
+        <li class="list-group-item" *ngFor="let user of usersArray">
+          <div (click)="getUserDetails(user)" style="cursor: pointer">
+            <h3>{{ user.display_name }}</h3>
+          </div>
+        </li>
+      </ul>
+      <p *ngIf="isFetching && !error">Loading...</p>
+      <div class="alert alert-danger" *ngIf="error">
+        <h1>An Error Occurred!</h1>
+        <button class="btn btn-danger" (click)="onHandleError()">Okay</button>
+      </div>
+    </div>
+    <app-user-detail
+      [userDetail]="userSelected"
+      *ngIf="userSelected"
+      (close)="onDetailsclose()"
+    ></app-user-detail>
+  </div>
+</div>
